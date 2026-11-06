@@ -1,0 +1,141 @@
+---
+title: Linear Combinations
+---
+
+import CombinationExplorer from '../../components/interactive/CombinationExplorer.tsx';
+
+
+We've now seen two operations: adding vectors and multiplying vectors by scalars. Let's put them together.
+
+<Definition>
+
+Let $\vv{v}_1, \vv{v}_2, \ldots, \vv{v}_k$ be vectors in $\R^n$ and let $c_1, c_2, \ldots, c_k$ be scalars. The vector
+
+$$
+c_1\,\vv{v}_1 + c_2\,\vv{v}_2 + \cdots + c_k\,\vv{v}_k
+$$
+
+is called a **linear combination** of $\vv{v}_1, \ldots, \vv{v}_k$. The scalars $c_1, \ldots, c_k$ are called the **weights** (or **coefficients**).
+
+</Definition>
+
+This is one of the most important ideas in linear algebra. Almost everything we study later—spans, linear independence, matrices—revolves around linear combinations.
+
+<Example id="ex-lincomb-1">
+
+Let $\vv{v}_1 = \colvec{1\\0}$ and $\vv{v}_2 = \colvec{0\\1}$ (the standard basis vectors in $\R^2$). Then
+
+$$
+3\,\vv{v}_1 + 2\,\vv{v}_2 = 3\colvec{1\\0} + 2\colvec{0\\1} = \colvec{3\\0} + \colvec{0\\2} = \colvec{3\\2}.
+$$
+
+In fact, *every* vector in $\R^2$ is a linear combination of $\vv{v}_1$ and $\vv{v}_2$—this is exactly the statement that every vector has components!
+
+</Example>
+
+<Example id="ex-lincomb-2">
+
+Now try non-standard vectors. Let $\vv{u} = \colvec{1\\1}$ and $\vv{w} = \colvec{1\\-1}$. Can we write $\vv{b} = \colvec{5\\1}$ as a linear combination of $\vv{u}$ and $\vv{w}$?
+
+We need scalars $c_1, c_2$ such that
+
+$$
+c_1 \colvec{1\\1} + c_2 \colvec{1\\-1} = \colvec{5\\1}.
+$$
+
+Writing this out component-by-component:
+
+$$
+\begin{aligned}
+c_1 + c_2 &= 5, \\
+c_1 - c_2 &= 1.
+\end{aligned}
+$$
+
+Adding the two equations gives $2c_1 = 6$, so $c_1 = 3$, and then $c_2 = 2$. So $\vv{b} = 3\vv{u} + 2\vv{w}$. Let's verify:
+
+$$
+3\colvec{1\\1} + 2\colvec{1\\-1} = \colvec{3\\3} + \colvec{2\\-2} = \colvec{5\\1}. \quad\checkmark
+$$
+
+</Example>
+
+Let's see what this looks like geometrically.
+
+<Figure src="ch01/linear-combination.svg" alt="Tip-to-tail: 3u from the origin to (3,3), then 2w from (3,3) to (5,1), reaching b = (5,1)." />
+
+The picture shows the tip-to-tail addition: first we travel along $3\vv{u}$, then along $2\vv{w}$, arriving at $\vv{b}$.
+
+<Exercise>
+
+Write $\vv{b} = \colvec{7\\3}$ as a linear combination of $\vv{u} = \colvec{2\\1}$ and $\vv{v} = \colvec{1\\-1}$.
+
+</Exercise>
+
+<Solution>
+
+We need $c_1\colvec{2\\1} + c_2\colvec{1\\-1} = \colvec{7\\3}$, giving $2c_1 + c_2 = 7$ and $c_1 - c_2 = 3$. Adding: $3c_1 = 10$, so $c_1 = 10/3$ and $c_2 = 7 - 20/3 = 1/3$.
+
+Therefore $\vv{b} = \tfrac{10}{3}\,\vv{u} + \tfrac{1}{3}\,\vv{v}$. Check: $\tfrac{10}{3}\colvec{2\\1} + \tfrac{1}{3}\colvec{1\\-1} = \colvec{20/3\\10/3} + \colvec{1/3\\-1/3} = \colvec{21/3\\9/3} = \colvec{7\\3}$. ✓
+
+</Solution>
+
+<Exercise>
+
+Let $\vv{v}_1 = \colvec{1\\0\\1}$, $\vv{v}_2 = \colvec{0\\1\\1}$, and $\vv{v}_3 = \colvec{1\\1\\0}$. Find scalars $c_1, c_2, c_3$ such that
+
+$$
+c_1\,\vv{v}_1 + c_2\,\vv{v}_2 + c_3\,\vv{v}_3 = \colvec{3\\5\\4}.
+$$
+
+</Exercise>
+
+<Solution>
+
+Writing out component-by-component: $c_1 + c_3 = 3$, $c_2 + c_3 = 5$, $c_1 + c_2 = 4$.
+
+From the first equation, $c_1 = 3 - c_3$. Substituting into the third: $(3 - c_3) + c_2 = 4$, so $c_2 = 1 + c_3$. Substituting into the second: $(1 + c_3) + c_3 = 5$, giving $2c_3 = 4$, so $c_3 = 2$.
+
+Then $c_1 = 1$ and $c_2 = 3$. Check: $1\colvec{1\\0\\1} + 3\colvec{0\\1\\1} + 2\colvec{1\\1\\0} = \colvec{1\\0\\1} + \colvec{0\\3\\3} + \colvec{2\\2\\0} = \colvec{3\\5\\4}$. ✓
+
+</Solution>
+
+### What can linear combinations “reach”?
+
+Here's a question that will drive much of the next chapter.
+
+Consider a single nonzero vector $\vv{v}$ in $\R^2$. The set of all scalar multiples $c\,\vv{v}$ (for $c \in \R$) traces out a *line* through the origin in the direction of $\vv{v}$.
+
+<Figure src="ch01/multiples-line.svg" alt="The vectors v, 2v, and -v all lying on a single line through the origin, which contains every multiple of v." />
+
+Now take two vectors $\vv{u}$ and $\vv{v}$ that don't lie on the same line through the origin. What can $c_1\,\vv{u} + c_2\,\vv{v}$ reach as $c_1$ and $c_2$ range over all real numbers? Try a few examples and you'll discover something wonderful: you can reach *every point in $\R^2$*. Two non-collinear vectors in the plane let you “navigate” to any destination.
+
+<Explore title="Try it: reach the target">
+
+Use the sliders to choose weights $c_1$ and $c_2$ so that $c_1\vv{u} + c_2\vv{v}$ lands on the orange target. Then drag the target somewhere else, or drag $\vv{u}$ and $\vv{v}$. What happens when you make $\vv{u}$ and $\vv{v}$ point along the same line?
+
+<CombinationExplorer client:visible />
+
+</Explore>
+
+What if $\vv{u}$ and $\vv{v}$ *do* lie on the same line? Then every linear combination $c_1\,\vv{u} + c_2\,\vv{v}$ also lies on that line. You're stuck in one dimension.
+
+<Important>
+
+The set of all linear combinations of a collection of vectors is called their **span**. Understanding span—what you can and can't reach—is the topic of Chapter 2, and it's one of the central themes of linear algebra.
+
+</Important>
+
+<Exercise>
+
+Let $\vv{u} = \colvec{2\\4}$ and $\vv{v} = \colvec{-1\\-2}$. Is there any vector in $\R^2$ that *cannot* be written as a linear combination of $\vv{u}$ and $\vv{v}$? If so, give an example and explain why.
+
+</Exercise>
+
+<Solution>
+
+Note $\vv{v} = -\frac{1}{2}\vv{u}$, so $\vv{u}$ and $\vv{v}$ point along the same line through the origin (slope 2). Every linear combination $c_1\vv{u} + c_2\vv{v} = (c_1 - c_2/2)\colvec{2\\4}$ is a scalar multiple of $\colvec{2\\4}$ and therefore lies on that same line.
+
+Any vector not on this line is unreachable. For example, $\colvec{1\\0}$: we would need $2k = 1$ and $4k = 0$ for some $k$, which is impossible.
+
+</Solution>

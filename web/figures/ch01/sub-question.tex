@@ -1,0 +1,14 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.5,3);
+  \coordinate (B) at (4,1);
+  \draw[->, aopsblue, line width=1.2pt] (O) -- (A)
+    node[midway, left] {$\vv{a}$};
+  \draw[->, aopsred, line width=1.2pt] (O) -- (B)
+    node[midway, below] {$\vv{b}$};
+  \draw[->, black!55, dashed, line width=1.2pt] (A) -- (B)
+    node[midway, above right] {\Large ?};
+  \fill (O) circle (1.5pt) node[below left] {home};
+  \node[aopsblue, above] at (A) {\small you};
+  \node[aopsred, right] at (B) {\small friend};
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3.5,0.8);
+  \coordinate (S) at (4.6,3.4);
+  \draw[->, aopsblue, line width=1.3pt] (O) -- (A)
+    node[midway, below right] {$\vv{a}$};
+  \draw[->, aopsred, line width=1.3pt] (A) -- (S)
+    node[midway, right] {$\vv{b}$};
+  \draw[->, aopspurple, line width=1.5pt] (O) -- (S)
+    node[midway, above left] {$\vv{a} + \vv{b}$};
+  \fill (O) circle (1.5pt) node[below left] {start};
+  \fill (S) circle (1.5pt) node[above right] {end};
+  \node[align=left, font=\small, anchor=west] at (5.4,1.3) {detour: $\norm{\vv{a}} + \norm{\vv{b}}$\\[2pt] shortcut: $\norm{\vv{a} + \vv{b}}$};
+\end{tikzpicture}

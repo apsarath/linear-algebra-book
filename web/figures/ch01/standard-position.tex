@@ -1,0 +1,12 @@
+\begin{tikzpicture}[>=Stealth, thick]
+  \draw[gray!40, thin] (-1.5,-0.5) grid (4.5,3.5);
+  \draw[->, thick] (-1.5,0) -- (4.5,0) node[right] {$x$};
+  \draw[->, thick] (0,-0.5) -- (0,3.5) node[above] {$y$};
+  \draw[->, aopsblue!40, line width=1pt] (1,0.5) -- (4,2.5)
+    node[midway, above left, font=\footnotesize, aopsblue!50] {$\vv{a}$};
+  \draw[->, aopsblue, line width=1.4pt] (0,0) -- (3,2)
+    node[above left] {$\vv{a}$};
+  \fill (0,0) circle (1.5pt) node[below left] {$O$};
+  \node[aopsblue, right, align=left, font=\small] at (4.8,1.5)
+    {standard\\position};
+\end{tikzpicture}

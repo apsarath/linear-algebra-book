@@ -1,0 +1,14 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3,1);
+  \coordinate (B) at (1,2.5);
+  \coordinate (S) at ($(A) + (B)$);
+  \draw[->, aopsblue, line width=1.2pt] (O) -- (A)
+    node[midway, below] {$\vv{a}$};
+  \draw[->, aopsred, line width=1.2pt] (O) -- (B)
+    node[midway, left] {$\vv{b}$};
+  \draw[dashed, gray] (A) -- (S);
+  \draw[dashed, gray] (B) -- (S);
+  \draw[->, aopspurple, line width=1.4pt] (O) -- (S)
+    node[midway, above left=2pt] {$\vv{a}+\vv{b}$};
+\end{tikzpicture}

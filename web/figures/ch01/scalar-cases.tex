@@ -1,0 +1,49 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=0.7]
+  % --- Top-left: c > 1 ---
+  \begin{scope}
+    \draw[gray!30, thin] (-1.5,-1.5) grid (5.5,3.5);
+    \draw[->, thick] (-1.5,0) -- (5.5,0) node[right] {$x$};
+    \draw[->, thick] (0,-1.5) -- (0,3.5) node[above] {$y$};
+    \draw[->, aopsblue!50, line width=1pt] (0,0) -- (2,1)
+      node[above left, font=\small] {$\vv{a}$};
+    \draw[->, aopsgreen, line width=1.4pt] (0,0) -- (4,2)
+      node[above left, font=\small] {$2\vv{a}$};
+    \node[font=\small\bfseries, aopsgreen] at (2,-2.2) {$c=2>1$: longer};
+  \end{scope}
+  % --- Top-right: 0 < c < 1 ---
+  \begin{scope}[xshift=9.5cm]
+    \draw[gray!30, thin] (-1.5,-1.5) grid (5.5,3.5);
+    \draw[->, thick] (-1.5,0) -- (5.5,0) node[right] {$x$};
+    \draw[->, thick] (0,-1.5) -- (0,3.5) node[above] {$y$};
+    \draw[->, aopsblue!50, line width=1pt] (0,0) -- (2,1)
+      node[above left, font=\small] {$\vv{a}$};
+    \draw[->, aopsorange, line width=1.4pt] (0,0) -- (1,0.5)
+      node[above right, font=\small] {$\tfrac{1}{2}\vv{a}$};
+    \node[font=\small\bfseries, aopsorange] at (2,-2.2)
+      {$c=\tfrac{1}{2}$: shorter};
+  \end{scope}
+  % --- Bottom-left: c = 0 ---
+  \begin{scope}[yshift=-7.5cm]
+    \draw[gray!30, thin] (-1.5,-1.5) grid (5.5,3.5);
+    \draw[->, thick] (-1.5,0) -- (5.5,0) node[right] {$x$};
+    \draw[->, thick] (0,-1.5) -- (0,3.5) node[above] {$y$};
+    \draw[->, aopsblue!50, line width=1pt] (0,0) -- (2,1)
+      node[above left, font=\small] {$\vv{a}$};
+    \fill[aopspurple] (0,0) circle (3pt);
+    \node[font=\small, aopspurple, below right] at (0.15,-0.1) {$0\,\vv{a}=\vv{0}$};
+    \node[font=\small\bfseries, aopspurple] at (2,-2.2)
+      {$c=0$: collapses to $\vv{0}$};
+  \end{scope}
+  % --- Bottom-right: c < 0 ---
+  \begin{scope}[xshift=9.5cm, yshift=-7.5cm]
+    \draw[gray!30, thin] (-4.5,-2.5) grid (3.5,2.5);
+    \draw[->, thick] (-4.5,0) -- (3.5,0) node[right] {$x$};
+    \draw[->, thick] (0,-2.5) -- (0,2.5) node[above] {$y$};
+    \draw[->, aopsblue!50, line width=1pt] (0,0) -- (2,1)
+      node[above left, font=\small] {$\vv{a}$};
+    \draw[->, aopsred, line width=1.4pt] (0,0) -- (-3,-1.5)
+      node[below left, font=\small] {$-\tfrac{3}{2}\vv{a}$};
+    \node[font=\small\bfseries, aopsred] at (-0.5,-3.2)
+      {$c=-\tfrac{3}{2}$: reversed \& scaled};
+  \end{scope}
+\end{tikzpicture}

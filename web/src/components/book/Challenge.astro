@@ -1,0 +1,12 @@
+---
+interface Props {
+  id: string;
+  number: string;
+  title?: string;
+}
+const { id, number, title } = Astro.props;
+---
+<section class="exercise challenge" id={id}>
+  <a class="item-label" href={`#${id}`}>Challenge Problem {number}{title && <span class="item-title"> ({title})</span>}.</a>
+  <slot />
+</section>

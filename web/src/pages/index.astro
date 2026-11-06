@@ -1,0 +1,36 @@
+---
+import BookLayout from '../layouts/BookLayout.astro';
+import { BOOK_TITLE, chapterUrl, sectionUrl } from '../lib/book.mjs';
+import { allChapters } from '../lib/chapters';
+
+const chapters = allChapters();
+---
+<BookLayout title="Contents">
+  <header class="chapter-head">
+    <h1>{BOOK_TITLE}</h1>
+    <p class="lede">
+      A problem-driven introduction to linear algebra.
+      Read actively: try every exercise before opening its solution, and play with the interactive figures.
+    </p>
+  </header>
+  <ol class="contents">
+    {chapters.map((c) => (
+      <li class:list={{ unavailable: !c.available }}>
+        <div class="contents-chapter">
+          <span class="num">{c.n}</span>
+          {c.available ? <a href={chapterUrl(c.slug)}>{c.title}</a> : <span>{c.title} <em>(coming soon)</em></span>}
+        </div>
+        {c.sections.length > 0 && (
+          <ol class="contents-sections">
+            {c.sections.map((s) => (
+              <li>
+                <span class="num">{s.number}</span>
+                <a href={sectionUrl(c.slug, s.slug)} set:html={s.html} />
+              </li>
+            ))}
+          </ol>
+        )}
+      </li>
+    ))}
+  </ol>
+</BookLayout>

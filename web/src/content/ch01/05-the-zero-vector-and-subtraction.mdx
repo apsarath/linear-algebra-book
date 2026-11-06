@@ -1,0 +1,119 @@
+---
+title: The Zero Vector and Subtraction
+---
+
+import SubtractionExplorer from '../../components/interactive/SubtractionExplorer.tsx';
+import SubtractionQuiz from '../../components/interactive/SubtractionQuiz.tsx';
+
+
+The **zero vector** in $\R^n$ is the vector whose components are all zero:
+
+$$
+\vv{0} = \colvec{0 \\ 0 \\ \vdots \\ 0}.
+$$
+
+It has no direction and zero length—geometrically, it's a “dot.” It acts as the additive identity: $\vv{a} + \vv{0} = \vv{a}$ for every vector $\vv{a}$.
+
+The **negative** of a vector $\vv{a}$ is $-\vv{a} = (-1)\vv{a}$: it has the same length but points in the opposite direction. We have $\vv{a} + (-\vv{a}) = \vv{0}$.
+
+### Subtraction
+
+Here is a question. You are standing at the tip of $\vv{a}$, and your friend is standing at the tip of $\vv{b}$. Both arrows start at the origin, which we'll call home. What single displacement takes you to your friend?
+
+<Figure src="ch01/sub-question.svg" alt="Vectors a and b drawn from the origin (home). You stand at the tip of a, your friend at the tip of b, and a dashed arrow marked with a question mark joins you to your friend." />
+
+Before answering, recall how subtraction works for ordinary numbers. The number $7 - 3$ is what you must add to $3$ to get $7$. On a number line, it's the arrow that starts at $3$ and ends at $7$.
+
+<Figure src="ch01/number-line-difference.svg" alt="A number line from 0 to 8. A green arrow from 3 to 7 is labelled 7 − 3 = 4; an orange arrow from 7 back to 3 is labelled 3 − 7 = −4." />
+
+In equation form: $3 + x = 7$, and we call the answer $x = 7 - 3$. Notice the order: the arrow *from* $3$ *to* $7$ is $7 - 3$, the **end minus the start**. Reading "from 3 to 7" left to right tempts you to write $3 - 7$, but that's the arrow going the other way.
+
+Vectors work the same way. You start at the tip of $\vv{a}$ and end at the tip of $\vv{b}$, so the displacement we want is the vector $\vv{x}$ that, added to $\vv{a}$, gives $\vv{b}$:
+
+$$
+\vv{a} + \vv{x} = \vv{b}, \qquad\text{and we call this } \vv{x} \text{ the difference } \vv{b} - \vv{a}.
+$$
+
+So we define **subtraction** by exactly that: **$\vv{b} - \vv{a}$ is the vector you add to $\vv{a}$ to get $\vv{b}$.** In components, we need $a_1 + x_1 = b_1$ and $a_2 + x_2 = b_2$, so
+
+$$
+\vv{b} - \vv{a} = \colvec{b_1 - a_1 \\ b_2 - a_2}.
+$$
+
+Now look at the tip-to-tail picture of $\vv{a} + (\vv{b} - \vv{a}) = \vv{b}$. Walk along $\vv{a}$, then along $\vv{b} - \vv{a}$, and you must arrive at the tip of $\vv{b}$. So $\vv{b} - \vv{a}$ is the *missing side* of the triangle, and it answers our question: the trip from you to your friend is $\vv{b} - \vv{a}$, not $\vv{a} - \vv{b}$.
+
+<Figure src="ch01/subtraction.svg" alt="Vectors a and b from the origin, with b − a drawn from the tip of a to the tip of b, closing the triangle: a + (b − a) = b." />
+
+<Important>
+
+When $\vv{a}$ and $\vv{b}$ are drawn from the same point, $\vv{b} - \vv{a}$ is the arrow **from the tip of $\vv{a}$ to the tip of $\vv{b}$**.
+
+To remember which way it points: $\vv{b} - \vv{a}$ must *arrive at* $\vv{b}$, because $\vv{a} + (\vv{b} - \vv{a}) = \vv{b}$. In words: *destination minus start*.
+
+</Important>
+
+**Adding the negative.** Since $-\vv{a}$ undoes $\vv{a}$, subtracting $\vv{a}$ should be the same as adding $-\vv{a}$. Let's draw it. Start at the origin, walk along $\vv{b}$, then walk along $-\vv{a}$, which is $\vv{a}$ flipped around. Where do you end up?
+
+<Figure src="ch01/sub-add-negative.svg" alt="From the origin, b then −a (dashed) leads to the point (b1 − a1, b2 − a2); the green arrow b + (−a) goes from the origin to that point. A second green arrow b − a goes from the tip of a to the tip of b. The two green arrows are opposite sides of a shaded parallelogram." />
+
+The two green arrows are opposite sides of a parallelogram: same length, same direction. By our slide test, they are the *same vector*. So
+
+$$
+\vv{b} + (-\vv{a}) = \vv{b} - \vv{a},
+$$
+
+and the components agree: $\colvec{b_1 + (-a_1) \\ b_2 + (-a_2)} = \colvec{b_1 - a_1 \\ b_2 - a_2}$.
+
+This picture also shows where $\vv{b} - \vv{a}$ sits in standard position: adding $-\vv{a}$ to $\vv{b}$ lands exactly on it. The missing side shows *how to get* from $\vv{a}$ to $\vv{b}$; the standard-position copy shows the difference as a single point, $(b_1 - a_1,\ b_2 - a_2)$, so you can read off its components.
+
+**The other diagonal.** Now complete the parallelogram on $\vv{a}$ and $\vv{b}$ themselves. We already know one diagonal is $\vv{a} + \vv{b}$. The *other* diagonal, running from the tip of $\vv{a}$ to the tip of $\vv{b}$, is $\vv{b} - \vv{a}$. Every parallelogram carries both the sum and the difference of its sides, a fact we'll put to work in the review problems.
+
+<Figure src="ch01/sub-diagonals.svg" alt="The parallelogram on a and b, with diagonal a + b (purple) from the origin and diagonal b − a (green) from the tip of a to the tip of b." />
+
+<Explore title="Try it: three pictures, one difference">
+
+Drag $\vv{a}$ and $\vv{b}$, and switch between the three pictures. The green arrow $\vv{b} - \vv{a}$ is the same vector in every one.
+
+<SubtractionExplorer client:visible />
+
+</Explore>
+
+<Explore title="Quick check: which arrow is b − a?">
+
+Pick the arrow that represents $\vv{b} - \vv{a}$. Watch the direction!
+
+<SubtractionQuiz client:visible />
+
+</Explore>
+
+### The vector from one point to another
+
+The question we started with is the most common use of subtraction. If $P$ and $Q$ are points, the displacement from $P$ to $Q$ is written $\overrightarrow{PQ}$, and
+
+$$
+\overrightarrow{PQ} = Q - P \qquad \text{(destination minus start)},
+$$
+
+where we subtract coordinates as if the points were vectors in standard position. For example, from $P = (1, 4)$ to $Q = (6, 2)$:
+
+$$
+\overrightarrow{PQ} = \colvec{6 - 1 \\ 2 - 4} = \colvec{5 \\ -2}.
+$$
+
+You walk 5 right and 2 down. Notice that the answer doesn't depend on where home is. If we moved the origin, both $P$ and $Q$ would shift by the same amount, and that shift cancels in $Q - P$. This is why a difference of two positions is a genuine vector: it records only *how to get from one to the other*, not where either one is.
+
+<Exercise>
+
+Let $\vv{a} = \colvec{5\\2}$ and $\vv{b} = \colvec{1\\4}$. Compute $\vv{a} - \vv{b}$ and $\vv{b} - \vv{a}$. How are the two results related? Draw a picture that illustrates both.
+
+</Exercise>
+
+<Solution>
+
+$\vv{a} - \vv{b} = \colvec{5-1\\2-4} = \colvec{4\\-2}$ and $\vv{b} - \vv{a} = \colvec{1-5\\4-2} = \colvec{-4\\2}$.
+
+<Figure src="ch01/sol-subtraction.svg" alt="Two panels, each with a = (5,2) and b = (1,4) drawn from the origin. Left: a − b in orange, from the tip of b to the tip of a. Right: b − a in green, from the tip of a to the tip of b." />
+
+The two results are negatives of each other: $\vv{b} - \vv{a} = -(\vv{a} - \vv{b})$. Geometrically, they are arrows of the same length pointing in opposite directions—one goes from the tip of $\vv{b}$ to the tip of $\vv{a}$, the other from the tip of $\vv{a}$ to the tip of $\vv{b}$.
+
+</Solution>

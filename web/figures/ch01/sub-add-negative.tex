@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.5,3);
+  \coordinate (B) at (4,1);
+  \coordinate (D) at ($(B) - (A)$);
+  \fill[aopsgreen!8] (O) -- (D) -- (B) -- (A) -- cycle;
+  \draw[->, aopsred, line width=1.2pt] (O) -- (B)
+    node[pos=0.55, above, sloped] {$\vv{b}$};
+  \draw[->, aopsblue!70, line width=1.1pt] (O) -- (A)
+    node[midway, left] {$\vv{a}$};
+  \draw[->, aopsblue, dashed, line width=1.2pt] (B) -- (D)
+    node[midway, right] {$-\vv{a}$};
+  \draw[->, aopsgreen, line width=1.4pt] (O) -- (D)
+    node[midway, below left] {$\vv{b} + (-\vv{a})$};
+  \draw[->, aopsgreen, line width=1.4pt] (A) -- (B)
+    node[midway, above right] {$\vv{b} - \vv{a}$};
+  \fill (O) circle (1.5pt);
+  \fill[aopsgreen] (D) circle (1.5pt) node[below=3pt, font=\small] {$(b_1 - a_1,\ b_2 - a_2)$};
+\end{tikzpicture}

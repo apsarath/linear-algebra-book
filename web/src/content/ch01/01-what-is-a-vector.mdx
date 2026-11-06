@@ -1,0 +1,66 @@
+---
+title: What Is a Vector?
+---
+
+import SameVectorQuiz from '../../components/interactive/SameVectorQuiz.tsx';
+import StandardPositionQuiz from '../../components/interactive/StandardPositionQuiz.tsx';
+
+Imagine you're standing at the corner of a city grid. A friend texts you directions: “Walk three blocks east, then four blocks north.” You don't need to know *where* you are—those instructions describe a *displacement*: a quantity with both a *magnitude* (how far) and a *direction* (which way). That displacement is an example of a **vector**, and vectors are the central objects of linear algebra.
+
+<Figure src="ch01/city-grid.svg" alt="A city grid: walking 3 blocks east then 4 blocks north from a start corner gives a single displacement arrow. The same instructions from another corner give an identical arrow." />
+
+In this chapter we'll develop vectors from the ground up: first as geometric arrows, then as lists of numbers, and finally as objects we can combine in powerful ways. Along the way, we'll build the vocabulary and intuition that the rest of this book depends on.
+
+Let's start with a picture. Suppose you draw an arrow from a point $A$ to a point $B$ on a sheet of paper:
+
+<Figure src="ch01/arrow-a-to-b.svg" alt="An arrow from point A to point B." />
+
+This arrow encodes two pieces of information: its *length* (the distance from $A$ to $B$) and its *direction* (the way it points). We call it a **geometric vector**.
+
+Here is the crucial idea: we consider two arrows to be *the same vector* if they have the same length and direction, regardless of where they sit in the plane. Slide the arrow anywhere you like without rotating or stretching it, and it still represents the same vector.
+
+<Figure src="ch01/same-vector.svg" alt="Three parallel arrows of equal length at different positions, all representing the same vector." />
+
+It is just as important to recognize when two arrows are *not* the same vector. Here is a reliable test: slide one arrow, without rotating or stretching it, until its tail sits on the tail of the other. If the tips land on the same spot, the arrows are the same vector. If they don't, the arrows are different vectors.
+
+<Example id="ex-different-vectors" title="Three ways to be different">
+
+In each panel below, the blue arrow $\vv{u}$ and the red arrow $\vv{v}$ are different vectors. The dashed arrow is $\vv{v}$ slid over so that its tail sits on the tail of $\vv{u}$ (the black dot). In every panel, the tips fail to meet.
+
+<Figure src="ch01/different-vectors.svg" alt="Three panels. (a) The red arrow points the same way as the blue arrow but is half as long. (b) The red arrow is as long as the blue one but points straight right instead of up and to the right. (c) The red arrow is shorter and points up and to the left. In each panel a dashed copy of the red arrow, slid to the blue arrow's tail, ends at a different tip." />
+
+1. **Different length.** $\vv{v}$ points in exactly the same direction as $\vv{u}$; slid over, it lies right on top of $\vv{u}$. But it is only half as long, so its tip stops halfway along $\vv{u}$. Same direction is not enough: walking 3 blocks east and walking 6 blocks east are different displacements.
+2. **Different direction.** $\vv{v}$ has the same length as $\vv{u}$ (measure both with a ruler), but it points straight to the right while $\vv{u}$ climbs up and to the right. Slid over, it swings away from $\vv{u}$. Same length is not enough either: 5 blocks east and 5 blocks north take you to different corners. Even an arrow pointing in exactly the *opposite* direction counts as a different direction; that case will matter when we meet $-\vv{u}$ later in the chapter.
+3. **Both differ.** $\vv{v}$ is shorter than $\vv{u}$ *and* points up and to the left. Either difference alone would already make them different vectors.
+
+Notice what was *not* a reason in any panel: the red arrow sits in a different place from the blue one. Position never matters. Only length and direction do.
+
+</Example>
+
+<Explore title="Try it: same vector or not?">
+
+Each round shows two arrows, $\vv{u}$ and $\vv{v}$. Decide whether they represent the same vector. If you're unsure, drag a tail to slide one arrow onto the other and check whether the tips meet. After each answer you'll see the verdict and the reason; then move on to the next pair.
+
+<SameVectorQuiz client:visible />
+
+</Explore>
+
+Since position never matters, we are free to draw a vector wherever is most convenient. The most convenient choice is to put every tail at the same spot: the **origin**, where the axes cross. A vector drawn with its tail at the origin is in **standard position**.
+
+This choice also makes the slide test automatic. Two arrows in standard position already share a tail, so they are the same vector exactly when their tips land on the same point.
+
+<Figure src="ch01/standard-position.svg" alt="A vector a drawn with its tail at the origin (standard position), next to a faded copy elsewhere in the plane." />
+
+<Explore title="Try it: put it in standard position">
+
+Drag the tail of $\vv{a}$ to the origin. The arrow slides without turning or stretching, so it stays the same vector the whole time. When you get there, look at where the tip lands.
+
+<StandardPositionQuiz client:visible />
+
+</Explore>
+
+<Warning>
+
+A vector is *not* the same thing as a point. The point $(3,2)$ is a location in the plane. The vector from the origin to $(3,2)$ is a *displacement*—it tells you “go 3 units right and 2 units up” regardless of where you start. We'll sometimes blur this distinction for convenience (since every vector in standard position ends at a unique point), but keep the conceptual difference in mind.
+
+</Warning>

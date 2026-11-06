@@ -1,0 +1,18 @@
+---
+interface Props {
+  kind: 'concept' | 'important' | 'warning' | 'definition' | 'theorem';
+  title?: string;
+}
+const defaults = {
+  concept: 'Concept',
+  important: 'Important',
+  warning: 'Warning',
+  definition: 'Definition',
+  theorem: 'Theorem',
+};
+const { kind, title } = Astro.props;
+---
+<aside class={`box box-${kind}`}>
+  <div class="box-title">{title ?? defaults[kind]}</div>
+  <div class="box-body"><slot /></div>
+</aside>

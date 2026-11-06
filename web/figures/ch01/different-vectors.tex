@@ -1,0 +1,36 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=0.8,
+    u/.style={->, aopsblue, line width=1.2pt},
+    v/.style={->, aopsred, line width=1.2pt},
+    ghost/.style={->, aopsred!55, dashed, line width=1pt},
+    paneltitle/.style={font=\small\bfseries, text=black!75}]
+
+  % (a) same direction, different length
+  \begin{scope}
+    \draw[step=1, black!10, thin] (-1.5,-2) grid (4.5,3);
+    \draw[u] (0,0) -- (3,2) node[midway, above left] {$\vv{u}$};
+    \draw[v] (1.5,-1.5) -- (3,-0.5) node[midway, below right] {$\vv{v}$};
+    \draw[ghost] (0,0) -- (1.5,1);
+    \fill (0,0) circle (1.5pt);
+    \node[paneltitle] at (1.5,-2.6) {(a) different length};
+  \end{scope}
+
+  % (b) same length, different direction
+  \begin{scope}[xshift=7.5cm]
+    \draw[step=1, black!10, thin] (-1.5,-2) grid (4.5,3);
+    \draw[u] (0,0) -- (3,2) node[midway, above left] {$\vv{u}$};
+    \draw[v] (0,-1.5) -- (3.6,-1.5) node[midway, below] {$\vv{v}$};
+    \draw[ghost] (0,0) -- (3.6,0);
+    \fill (0,0) circle (1.5pt);
+    \node[paneltitle] at (1.5,-2.6) {(b) different direction};
+  \end{scope}
+
+  % (c) both differ
+  \begin{scope}[xshift=15cm]
+    \draw[step=1, black!10, thin] (-1.5,-2) grid (4.5,3);
+    \draw[u] (0,0) -- (3,2) node[midway, below right] {$\vv{u}$};
+    \draw[v] (3.5,-1.5) -- (2.5,0) node[midway, right] {$\vv{v}$};
+    \draw[ghost] (0,0) -- (-1,1.5);
+    \fill (0,0) circle (1.5pt);
+    \node[paneltitle] at (1.5,-2.6) {(c) both differ};
+  \end{scope}
+\end{tikzpicture}

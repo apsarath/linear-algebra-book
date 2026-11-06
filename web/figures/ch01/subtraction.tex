@@ -1,0 +1,13 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.5,3);
+  \coordinate (B) at (4,1);
+  \draw[->, aopsblue, line width=1.2pt] (O) -- (A)
+    node[midway, left] {$\vv{a}$};
+  \draw[->, aopsred, line width=1.2pt] (O) -- (B)
+    node[midway, below] {$\vv{b}$};
+  \draw[->, aopsgreen, line width=1.4pt] (A) -- (B)
+    node[midway, above right] {$\vv{b} - \vv{a}$};
+  \fill (O) circle (1.5pt);
+  \node[align=center, font=\small, black!70] at (2.1,-1) {$\vv{a} + (\vv{b} - \vv{a}) = \vv{b}$};
+\end{tikzpicture}

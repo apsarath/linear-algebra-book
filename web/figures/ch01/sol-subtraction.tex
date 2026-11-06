@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=1.0]
+  \foreach \shift/\title in {0/{$\vv{a} - \vv{b}$: tip of $\vv{b}$ to tip of $\vv{a}$}, 8/{$\vv{b} - \vv{a}$: tip of $\vv{a}$ to tip of $\vv{b}$}} {
+    \begin{scope}[xshift=\shift cm]
+      \draw[gray!30, thin] (-0.5,-0.5) grid (6.5,5.5);
+      \draw[->, thick] (-0.5,0) -- (6.5,0) node[right] {$x$};
+      \draw[->, thick] (0,-0.5) -- (0,5.5) node[above] {$y$};
+      \draw[->, aopsblue, line width=1.3pt] (0,0) -- (5,2)
+        node[below right] {$\vv{a}$};
+      \draw[->, aopsred, line width=1.3pt] (0,0) -- (1,4)
+        node[above left] {$\vv{b}$};
+      \fill (0,0) circle (1.5pt) node[below left] {$O$};
+      \node at (3,-1.2) {\title};
+    \end{scope}
+  }
+  \draw[->, aopsorange, line width=1.6pt] (1,4) -- (5,2)
+    node[midway, above right] {$\vv{a}-\vv{b}$};
+  \draw[->, aopsgreen, line width=1.6pt] (13,2) -- (9,4)
+    node[midway, above right] {$\vv{b}-\vv{a}$};
+\end{tikzpicture}

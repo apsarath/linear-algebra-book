@@ -1,0 +1,82 @@
+---
+title: Challenge Problems
+---
+
+
+<Challenge id="ch-diff-norm" solution="appendix">
+
+Let $\vv{u}$ and $\vv{v}$ be vectors in $\R^2$ with $\norm{\vv{u}} = 3$, $\norm{\vv{v}} = 4$, and $\norm{\vv{u} + \vv{v}} = 5$. What is $\norm{\vv{u} - \vv{v}}$?
+
+<Hint>
+
+Use the parallelogram law.
+
+</Hint>
+
+</Challenge>
+
+<Challenge id="ch-nontrivial-zero" solution="appendix">
+
+Let $\vv{v}_1, \vv{v}_2, \ldots, \vv{v}_k$ be vectors in $\R^n$ and let $\vv{b} \in \R^n$. Suppose $\vv{b}$ can be written as a linear combination of $\vv{v}_1, \ldots, \vv{v}_k$ in *two different ways*:
+
+$$
+\vv{b} = c_1 \vv{v}_1 + \cdots + c_k \vv{v}_k = d_1 \vv{v}_1 + \cdots + d_k \vv{v}_k,
+$$
+
+where $(c_1, \ldots, c_k) \ne (d_1, \ldots, d_k)$. Show that the zero vector $\vv{0}$ can be written as a *nontrivial* linear combination of $\vv{v}_1, \ldots, \vv{v}_k$ (that is, with at least one nonzero coefficient).
+
+<Hint>
+
+Subtract one expression from the other.
+
+</Hint>
+
+</Challenge>
+
+<Challenge id="ch-angle-bisector" solution="appendix">
+
+Let $\vv{a}$ and $\vv{b}$ be vectors in $\R^n$, both nonzero. Prove that the vector
+
+$$
+\vv{c} = \norm{\vv{b}}\,\vv{a} + \norm{\vv{a}}\,\vv{b}
+$$
+
+bisects the angle between $\vv{a}$ and $\vv{b}$.
+
+<Hint>
+
+Normalize $\vv{a}$ and $\vv{b}$ first. What happens when you add two unit vectors?
+
+</Hint>
+
+</Challenge>
+
+<Challenge id="ch-polarization" solution="appendix">
+
+Prove that for any vectors $\vv{u}, \vv{v} \in \R^n$,
+
+$$
+\norm{\vv{u}+\vv{v}}^2 - \norm{\vv{u}-\vv{v}}^2 = 4\sum_{i=1}^n u_i v_i.
+$$
+
+This is called the **polarization identity**. It shows that the quantity $\sum u_i v_i$ (which we'll later call the *dot product*) is completely determined by the norm.
+
+</Challenge>
+
+<Challenge id="ch-centroid" solution="appendix">
+
+Let $\vv{v}_1, \vv{v}_2, \ldots, \vv{v}_m \in \R^n$. Define the **centroid** $\vv{g} = \frac{1}{m}(\vv{v}_1 + \vv{v}_2 + \cdots + \vv{v}_m)$. Prove that the centroid minimizes the sum of squared distances:
+
+$$
+\sum_{i=1}^{m} \norm{\vv{x} - \vv{v}_i}^2
+$$
+
+is minimized when $\vv{x} = \vv{g}$.
+
+<Hint>
+
+Expand $\norm{\vv{x} - \vv{v}_i}^2$ in components, sum over $i$, and complete the square (or take a derivative with respect to each component of $\vv{x}$).
+
+</Hint>
+
+</Challenge>

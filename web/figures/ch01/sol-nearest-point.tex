@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=0.9]
+  \draw[gray!30, thin] (-1.5,-1.5) grid (6.5,5.5);
+  \draw[->, thick] (-1.5,0) -- (6.5,0) node[right] {$x$};
+  \draw[->, thick] (0,-1.5) -- (0,5.5) node[above] {$y$};
+  % the line of multiples tv
+  \draw[gray!70, line width=1pt] (-0.75,-1.5) -- (2.75,5.5)
+    node[above, font=\small] {all $t\vv{v}$};
+  \draw[->, aopsblue, line width=1.4pt] (0,0) -- (1,2)
+    node[midway, left] {$\vv{v}$};
+  \coordinate (N) at (1.4,2.8);
+  \coordinate (P) at (5,1);
+  % right-angle mark at N
+  \draw[thin] (1.624,2.688) -- (1.512,2.464) -- (1.288,2.576);
+  \draw[aopsgreen, dashed, line width=1.3pt] (N) -- (P)
+    node[midway, above right, font=\small] {$\frac{9}{\sqrt5}$};
+  \fill[aopsred] (P) circle (2.2pt) node[right] {$\vv{p} = (5,1)$};
+  \fill[aopsgreen] (N) circle (2.2pt) node[left=3pt] {$\tfrac{7}{5}\vv{v} = \left(\tfrac{7}{5}, \tfrac{14}{5}\right)$};
+  \fill (0,0) circle (1.5pt) node[below left] {$O$};
+\end{tikzpicture}

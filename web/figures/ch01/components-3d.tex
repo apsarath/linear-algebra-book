@@ -1,0 +1,10 @@
+\begin{tikzpicture}[>=Stealth, scale=1.0,
+    x={(-0.4cm,-0.3cm)}, y={(1cm,0cm)}, z={(0cm,1cm)}]
+  \draw[->, thick] (0,0,0) -- (4,0,0) node[below left] {$x$};
+  \draw[->, thick] (0,0,0) -- (0,4,0) node[right] {$y$};
+  \draw[->, thick] (0,0,0) -- (0,0,3.5) node[above] {$z$};
+  \draw[->, aopsblue, line width=1.4pt] (0,0,0) -- (2,3,2.5);
+  \draw[dashed, gray] (2,3,0) -- (2,3,2.5);
+  \draw[dashed, gray] (0,0,0) -- (2,3,0);
+  \node[right, aopsblue] at (2,3,2.5) {$\vv{b} = \colvec{2\\3\\2.5}$};
+\end{tikzpicture}

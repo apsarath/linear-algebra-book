@@ -1,0 +1,102 @@
+---
+title: Scalar Multiplication
+---
+
+import ScalarExplorer from '../../components/interactive/ScalarExplorer.tsx';
+
+
+In everyday language, “scaling” means making something bigger or smaller. In linear algebra, a **scalar** is just a real number, and **scalar multiplication** means multiplying a vector by a scalar.
+
+### The geometric picture
+
+Multiplying a vector $\vv{a}$ by a scalar $c$ stretches or shrinks the arrow:
+
+- If $c > 1$, the arrow gets *longer* (same direction).
+- If $0 < c < 1$, the arrow gets *shorter* (same direction).
+- If $c = 0$, the arrow collapses to a single point (the zero vector).
+- If $c < 0$, the arrow *reverses direction* and scales by $\abs{c}$.
+
+<Figure src="ch01/scalar-cases.svg" alt="Four panels showing a vector a and its multiples 2a (longer), one-half a (shorter), 0a (the zero vector), and negative three-halves a (reversed and scaled)." />
+
+<Explore title="Try it: one slider, every case">
+
+Move the slider to sweep through all four cases above. You can also drag the tip of $\vv{a}$.
+
+<ScalarExplorer client:visible />
+
+</Explore>
+
+<Important>
+
+**Scaling never turns a vector.** Multiplying by $c$ can stretch $\vv{a}$, shrink it, or flip it around, but $c\,\vv{a}$ always lies on the same line through the origin as $\vv{a}$ (the gray band above).
+
+- If $c > 0$, the direction is exactly the same; only the length changes.
+- If $c < 0$, the vector points the opposite way along the same line. That flip is the *only* change of direction scaling can make.
+- No choice of $c$ can rotate $\vv{a}$ by, say, $30^\circ$.
+
+Two nonzero vectors that are scalar multiples of each other are called **parallel**.
+
+</Important>
+
+This simple fact will come back again and again. In Chapter 2 it explains why the multiples of a single vector fill only a line. Much later, it underlies *eigenvectors*: the special vectors that a transformation only scales and never turns.
+
+### The algebraic rule
+
+<Definition>
+
+If $c \in \R$ and $\vv{a} = \colvec{a_1\\a_2}$, then
+
+$$
+c\,\vv{a} = \colvec{c\, a_1 \\ c\, a_2}.
+$$
+
+Again, the same rule applies in $\R^n$ for any $n$: multiply every component by $c$.
+
+</Definition>
+
+<Example>
+
+Let $\vv{a} = \colvec{3\\-2\\5}$. Then $-2\,\vv{a} = \colvec{-6\\4\\-10}$ and $\frac{1}{3}\,\vv{a} = \colvec{1\\-2/3\\5/3}$.
+
+</Example>
+
+### Properties of scalar multiplication
+
+Let $\vv{a}$ and $\vv{b}$ be vectors in $\R^n$ and let $c, d \in \R$. The following all follow from the corresponding properties of real-number arithmetic:
+
+1. $c(\vv{a} + \vv{b}) = c\,\vv{a} + c\,\vv{b}$ (distributes over vector addition)
+2. $(c + d)\vv{a} = c\,\vv{a} + d\,\vv{a}$ (distributes over scalar addition)
+3. $c(d\,\vv{a}) = (cd)\vv{a}$
+4. $1\,\vv{a} = \vv{a}$
+
+<Exercise>
+
+Let $\vv{u} = \colvec{2\\-1}$ and $\vv{v} = \colvec{4\\3}$. Verify property (a) above for $c = 3$ by computing both sides and checking they are equal.
+
+</Exercise>
+
+<Solution>
+
+**Left side:** $3(\vv{u} + \vv{v}) = 3\colvec{6\\2} = \colvec{18\\6}$.
+
+**Right side:** $3\vv{u} + 3\vv{v} = \colvec{6\\-3} + \colvec{12\\9} = \colvec{18\\6}$.
+
+Both sides equal $\colvec{18\\6}$. ✓
+
+</Solution>
+
+<Exercise>
+
+Draw $\vv{v} = \colvec{1\\2}$ and the vectors $2\vv{v}$, $-\vv{v}$, and $\frac{1}{2}\vv{v}$ on the same set of axes. What do you notice about where all four arrows lie?
+
+</Exercise>
+
+<Solution>
+
+$2\vv{v} = \colvec{2\\4}$, $-\vv{v} = \colvec{-1\\-2}$, $\frac{1}{2}\vv{v} = \colvec{1/2\\1}$.
+
+<Figure src="ch01/sol-scalar-multiples.svg" alt="The vectors v, 2v, one-half v, and -v all lying along the line y = 2x." />
+
+All four arrows lie on the same line through the origin (the line $y = 2x$). Every scalar multiple of $\vv{v}$ lives on this line—scalar multiplication changes the length of the arrow (and possibly reverses its direction) but never changes the line it lies on.
+
+</Solution>

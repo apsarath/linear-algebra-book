@@ -1,0 +1,33 @@
+\begin{tikzpicture}[>=Stealth, scale=0.75]
+  % city blocks
+  \foreach \x in {0,...,11}
+    \foreach \y in {0,...,4}
+      \fill[gray!12, rounded corners=1pt] (\x+0.12,\y+0.12) rectangle (\x+0.88,\y+0.88);
+  \draw[gray!45, line width=0.6pt] (0,0) grid (12,5);
+  % compass
+  \begin{scope}[shift={(12.8,4.0)}]
+    \draw[->, thick] (0,0) -- (0,0.7) node[above, font=\scriptsize] {N};
+    \draw[->, thick] (0,0) -- (0.7,0) node[right, font=\scriptsize] {E};
+  \end{scope}
+  \tikzset{lbl/.style={font=\small, fill=white, inner sep=1.5pt, rounded corners=1pt}}
+  % main walk: 3 east, then 4 north
+  \draw[->, aopsred, line width=1.3pt] (1,0) -- (4,0);
+  \draw[->, aopsred, line width=1.3pt] (4,0) -- (4,4);
+  \node[lbl, text=aopsred, below] at (2.5,-0.15) {3 blocks east};
+  \node[lbl, text=aopsred, right] at (4.15,2) {4 blocks north};
+  % displacement
+  \draw[->, aopsblue, line width=1.6pt] (1,0) -- (4,4);
+  \node[lbl, text=aopsblue, left] at (2.25,2.1) {displacement};
+  \fill (1,0) circle (2.5pt);
+  \node[lbl, below left] at (0.95,-0.05) {start};
+  \fill (4,4) circle (2.5pt);
+  \node[lbl, above] at (4,4.1) {end};
+  % same instructions from a different corner
+  \draw[->, aopsred!40, line width=1pt] (8,1) -- (11,1);
+  \draw[->, aopsred!40, line width=1pt] (11,1) -- (11,5);
+  \draw[->, aopsblue!50, line width=1.3pt] (8,1) -- (11,5);
+  \fill[gray] (8,1) circle (2pt);
+  \node[lbl, font=\footnotesize, text=gray, below] at (8,0.9) {another start};
+  \node[below, font=\footnotesize, text=gray]
+    at (6,-0.9) {Same instructions from any corner give the same displacement arrow.};
+\end{tikzpicture}

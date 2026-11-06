@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=0.7]
+  \draw[gray!30, thin] (-2.5,-3.5) grid (3.5,5.5);
+  \draw[->, thick] (-2.5,0) -- (3.5,0) node[right] {$x$};
+  \draw[->, thick] (0,-3.5) -- (0,5.5) node[above] {$y$};
+  % line y=2x for context
+  \draw[aopspurple!20, line width=2pt] (-2.5,-5) -- (2.75,5.5);
+  % vectors
+  \draw[->, aopsgreen, line width=1.4pt] (0,0) -- (2,4)
+    node[right, font=\small] {$2\vv{v}$};
+  \draw[->, aopsblue, line width=1.4pt] (0,0) -- (1,2)
+    node[right, font=\small] {$\vv{v}$};
+  \draw[->, aopsorange, line width=1.4pt] (0,0) -- (0.5,1)
+    node[right, font=\small] {$\tfrac{1}{2}\vv{v}$};
+  \draw[->, aopsred, line width=1.4pt] (0,0) -- (-1,-2)
+    node[left, font=\small] {$-\vv{v}$};
+  \fill (0,0) circle (2pt);
+  \node[aopspurple!60, rotate=63, font=\small] at (2.2,5) {$y=2x$};
+\end{tikzpicture}

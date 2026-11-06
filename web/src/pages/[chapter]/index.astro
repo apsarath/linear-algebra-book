@@ -1,0 +1,14 @@
+---
+import { sectionUrl } from '../../lib/book.mjs';
+import { allChapters } from '../../lib/chapters';
+
+export function getStaticPaths() {
+  return allChapters()
+    .filter((c) => c.available && c.sections.length > 0)
+    .map((c) => ({ params: { chapter: c.slug } }));
+}
+
+const { chapter: slug } = Astro.params;
+const chapter = allChapters().find((c) => c.slug === slug)!;
+return Astro.redirect(sectionUrl(chapter.slug, chapter.sections[0]!.slug));
+---

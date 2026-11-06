@@ -1,0 +1,13 @@
+\begin{tikzpicture}[>=Stealth, scale=0.75]
+  \draw[gray!30, thin] (-3.5,-2.5) grid (4.5,3.5);
+  \draw[->, thick] (-3.5,0) -- (4.5,0) node[right] {$x$};
+  \draw[->, thick] (0,-2.5) -- (0,3.5) node[above] {$y$};
+  \draw[aopsblue!30, line width=2pt] (-3,-2) -- (4.5,3);
+  \draw[->, aopsblue, line width=1.4pt] (0,0) -- (1.5,1)
+    node[above left] {$\vv{v}$};
+  \draw[->, aopsgreen, line width=1pt] (0,0) -- (3,2)
+    node[above left] {$2\vv{v}$};
+  \draw[->, aopsred, line width=1pt] (0,0) -- (-1.5,-1)
+    node[below right] {$-\vv{v}$};
+  \node[aopsblue!60, right] at (3.5, 2.8) {all $c\vv{v}$};
+\end{tikzpicture}

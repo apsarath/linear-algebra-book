@@ -1,0 +1,11 @@
+\begin{tikzpicture}[>=Stealth, scale=0.85]
+  \draw[gray!40, thin] (-0.5,-0.5) grid (4.5,5.5);
+  \draw[->, thick] (-0.5,0) -- (4.5,0) node[right] {$x$};
+  \draw[->, thick] (0,-0.5) -- (0,5.5) node[above] {$y$};
+  \draw[->, aopsblue, line width=1.4pt] (0,0) -- (3,4)
+    node[above left] {$\vv{a}$};
+  \draw[dashed, aopsred, thick] (0,0) -- (3,0) node[midway, below] {$3$};
+  \draw[dashed, aopsred, thick] (3,0) -- (3,4) node[midway, right] {$4$};
+  \draw (2.7,0) -- (2.7,0.3) -- (3,0.3);
+  \node[aopsblue, rotate=53] at (1.1,1.8) {$\norm{\vv{a}} = 5$};
+\end{tikzpicture}

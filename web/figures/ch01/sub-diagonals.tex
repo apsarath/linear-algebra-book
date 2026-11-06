@@ -1,0 +1,17 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=1.1]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (1.5,3);
+  \coordinate (B) at (4,1);
+  \coordinate (S) at ($(A) + (B)$);
+  \draw[dashed, gray] (A) -- (S);
+  \draw[dashed, gray] (B) -- (S);
+  \draw[->, aopsblue, line width=1.2pt] (O) -- (A)
+    node[midway, left] {$\vv{a}$};
+  \draw[->, aopsred, line width=1.2pt] (O) -- (B)
+    node[midway, below] {$\vv{b}$};
+  \draw[->, aopspurple, line width=1.4pt] (O) -- (S)
+    node[pos=0.72, above left] {$\vv{a}+\vv{b}$};
+  \draw[->, aopsgreen, line width=1.4pt] (A) -- (B)
+    node[pos=0.3, below left] {$\vv{b}-\vv{a}$};
+  \fill (O) circle (1.5pt);
+\end{tikzpicture}

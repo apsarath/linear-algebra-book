@@ -1,0 +1,22 @@
+% Shared preamble for standalone TikZ figures (compiled to SVG by scripts/build_figures.py).
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath, amssymb, mathtools}
+\usepackage{tikz}
+\usetikzlibrary{calc, arrows.meta, positioning, decorations.pathreplacing,
+  decorations.markings, patterns, angles, quotes, 3d, matrix, intersections,
+  through, backgrounds}
+
+\definecolor{aopsblue}{RGB}{0, 90, 160}
+\definecolor{aopsred}{RGB}{180, 30, 30}
+\definecolor{aopsgreen}{RGB}{0, 120, 60}
+\definecolor{aopsorange}{RGB}{210, 105, 0}
+\definecolor{aopspurple}{RGB}{100, 40, 140}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\vv}[1]{\mathbf{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\colvec}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\Span}{\operatorname{span}}

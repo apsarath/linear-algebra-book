@@ -1,0 +1,13 @@
+\begin{tikzpicture}[>=Stealth, scale=0.9]
+  \draw[gray!40, thin] (-0.5,-0.5) grid (4.5,3.5);
+  \draw[->, thick] (-0.5,0) -- (4.5,0) node[right] {$x$};
+  \draw[->, thick] (0,-0.5) -- (0,3.5) node[above] {$y$};
+  \draw[->, aopsblue, line width=1.4pt] (0,0) -- (3,2);
+  \draw[dashed, aopsred] (3,0) -- (3,2);
+  \draw[dashed, aopsred] (0,2) -- (3,2);
+  \node[below, aopsred] at (1.5,0) {$3$};
+  \node[left, aopsred] at (0,1) {$2$};
+  \node[above right, aopsblue] at (3,2) {$\vv{a} = \colvec{3\\2}$};
+  \foreach \x in {1,2,3,4} \node[below, font=\footnotesize] at (\x,0) {\x};
+  \foreach \y in {1,2,3} \node[left, font=\footnotesize] at (0,\y) {\y};
+\end{tikzpicture}

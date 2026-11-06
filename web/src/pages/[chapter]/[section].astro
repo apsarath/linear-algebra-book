@@ -1,0 +1,48 @@
+---
+import BookLayout from '../../layouts/BookLayout.astro';
+import { bookComponents } from '../../components/book';
+import { sectionUrl, solutionsUrl } from '../../lib/book.mjs';
+import { allChapters, pageSubsections } from '../../lib/chapters';
+
+export function getStaticPaths() {
+  return allChapters()
+    .filter((c) => c.available)
+    .flatMap((c) => c.sections.map((s) => ({ params: { chapter: c.slug, section: s.slug } })));
+}
+
+const modules = import.meta.glob<{ Content: any }>('../../content/*/*.mdx', { eager: true });
+
+const { chapter: slug, section: sectionSlug } = Astro.params;
+const chapters = allChapters();
+const chapter = chapters.find((c) => c.slug === slug)!;
+const index = chapter.sections.findIndex((s) => s.slug === sectionSlug);
+const section = chapter.sections[index]!;
+const { Content } = modules[`../../content/${slug}/${section.file}`]!;
+const subsections = pageSubsections(chapter.slug, section.file);
+
+const prevSec = chapter.sections[index - 1];
+const nextSec = chapter.sections[index + 1];
+const prev = prevSec
+  ? { href: sectionUrl(chapter.slug, prevSec.slug), label: `${prevSec.number} ${prevSec.title}`, html: `${prevSec.number} ${prevSec.html}` }
+  : { href: '/', label: 'Contents' };
+const next = nextSec
+  ? { href: sectionUrl(chapter.slug, nextSec.slug), label: `${nextSec.number} ${nextSec.title}`, html: `${nextSec.number} ${nextSec.html}` }
+  : chapter.hasSolutions
+    ? { href: solutionsUrl(chapter.slug), label: `Chapter ${chapter.n} solutions` }
+    : undefined;
+---
+<BookLayout
+  title={`${section.number} ${section.title}`}
+  current={{ slug: chapter.slug, section: section.slug, page: 'section' }}
+  sections={subsections}
+  prev={prev}
+  next={next}
+>
+  <header class="chapter-head">
+    <div class="chapter-kicker">Chapter {chapter.n} · {chapter.title}</div>
+    <h1><span class="secnum">{section.number}</span> <span set:html={section.html} /></h1>
+  </header>
+  <article class="prose">
+    <Content components={bookComponents} />
+  </article>
+</BookLayout>

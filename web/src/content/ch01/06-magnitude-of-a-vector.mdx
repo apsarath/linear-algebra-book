@@ -1,0 +1,182 @@
+---
+title: Magnitude of a Vector
+---
+
+
+How long is the vector $\vv{a} = \colvec{3\\4}$? Draw it and you'll see a right triangle with legs 3 and 4. By the Pythagorean theorem, the hypotenuse—our vector's length—is $\sqrt{3^2 + 4^2} = \sqrt{25} = 5$.
+
+<Figure src="ch01/magnitude.svg" alt="The vector (3,4) as the hypotenuse of a right triangle with legs 3 and 4; its length is 5." />
+
+<Definition>
+
+The **magnitude** (or **length**, or **norm**) of a vector $\vv{a} = \colvec{a_1 \\ a_2 \\ \vdots \\ a_n} \in \R^n$ is
+
+$$
+\norm{\vv{a}} = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2} = \sqrt{\sum_{i=1}^{n} a_i^2}.
+$$
+
+This is also called the **Euclidean norm** or **$\ell^2$ norm**.
+
+</Definition>
+
+<Example>
+
+In $\R^3$, the magnitude of $\vv{b} = \colvec{1\\-2\\2}$ is
+
+$$
+\norm{\vv{b}} = \sqrt{1^2 + (-2)^2 + 2^2} = \sqrt{1+4+4} = \sqrt{9} = 3.
+$$
+
+</Example>
+
+### Properties of the norm
+
+Anything we call a "length" ought to behave like one. Lengths shouldn't be negative, only a "dot" should have no length, and stretching an arrow by a factor of 2 should double its length. Our formula passes all three tests, and each proof takes just a few lines.
+
+<Theorem title="Properties of the norm">
+
+For every vector $\vv{a} \in \R^n$ and every scalar $c$:
+
+1. **Never negative:** $\norm{\vv{a}} \ge 0$.
+2. **Only the zero vector has zero length:** $\norm{\vv{a}} = 0$ exactly when $\vv{a} = \vv{0}$.
+3. **Scaling:** $\norm{c\,\vv{a}} = \abs{c}\,\norm{\vv{a}}$.
+
+</Theorem>
+
+**Proof of (a).** Each square $a_i^2$ is at least $0$, so their sum $a_1^2 + \cdots + a_n^2$ is at least $0$. The square root of a nonnegative number is nonnegative, so $\norm{\vv{a}} \ge 0$. $\blacksquare$
+
+**Proof of (b).** If $\vv{a} = \vv{0}$, then $\norm{\vv{a}} = \sqrt{0^2 + \cdots + 0^2} = 0$.
+
+Conversely, suppose $\norm{\vv{a}} = 0$. Squaring both sides gives
+
+$$
+a_1^2 + a_2^2 + \cdots + a_n^2 = 0.
+$$
+
+Every term on the left is at least $0$. If even one of them were positive, say $a_k^2 > 0$, the whole sum would be at least $a_k^2 > 0$, not $0$. So every $a_i^2 = 0$, which means every $a_i = 0$, and $\vv{a} = \vv{0}$. $\blacksquare$
+
+**Proof of (c).** The components of $c\,\vv{a}$ are $ca_1, ca_2, \ldots, ca_n$, so
+
+$$
+\begin{aligned}
+\norm{c\,\vv{a}} &= \sqrt{(ca_1)^2 + (ca_2)^2 + \cdots + (ca_n)^2} \\
+&= \sqrt{c^2\,(a_1^2 + a_2^2 + \cdots + a_n^2)} \\
+&= \sqrt{c^2}\,\sqrt{a_1^2 + a_2^2 + \cdots + a_n^2} \\
+&= \abs{c}\,\norm{\vv{a}}.
+\end{aligned}
+$$
+
+The last step uses $\sqrt{c^2} = \abs{c}$, not $c$. For example, $\sqrt{(-3)^2} = \sqrt{9} = 3$. $\blacksquare$
+
+The absolute value in property (c) is exactly what our picture of scaling predicts. A negative scalar flips the arrow around, but a flipped arrow is no shorter: $-2\vv{a}$ is twice as long as $\vv{a}$, pointing the opposite way. Writing $\norm{c\,\vv{a}} = c\,\norm{\vv{a}}$ would give $-2\vv{a}$ a *negative* length, which property (a) rules out.
+
+<Example>
+
+Let $\vv{a} = \colvec{3\\4}$, so $\norm{\vv{a}} = 5$. Then $-2\vv{a} = \colvec{-6\\-8}$, and directly from the formula,
+
+$$
+\norm{-2\vv{a}} = \sqrt{36 + 64} = \sqrt{100} = 10.
+$$
+
+Property (c) predicts this without any arithmetic: $\norm{-2\vv{a}} = \abs{-2}\cdot 5 = 10$.
+
+</Example>
+
+Two special cases of property (c) come up so often that they're worth saying out loud:
+
+- With $c = -1$: $\norm{-\vv{a}} = \norm{\vv{a}}$. Flipping a vector doesn't change its length.
+- Since $\vv{a} - \vv{b} = -(\vv{b} - \vv{a})$, this gives $\norm{\vv{a} - \vv{b}} = \norm{\vv{b} - \vv{a}}$. The trip from $\vv{a}$ to $\vv{b}$ is as long as the trip back.
+
+**The triangle inequality.** There is one more property every length should have: a detour is never shorter than going straight. Walk along $\vv{a}$ and then along $\vv{b}$; the straight path to the same place is $\vv{a} + \vv{b}$. These three arrows form a triangle, and no side of a triangle is longer than the other two put together.
+
+<Figure src="ch01/triangle-inequality.svg" alt="Vector a followed tip-to-tail by vector b (the detour), and a + b drawn straight from the start to the end (the shortcut). The shortcut is shorter: the norm of a + b is at most the norm of a plus the norm of b." />
+
+<Theorem title="Triangle inequality">
+
+For all vectors $\vv{a}, \vv{b} \in \R^n$,
+
+$$
+\norm{\vv{a} + \vv{b}} \le \norm{\vv{a}} + \norm{\vv{b}}.
+$$
+
+Equality holds when $\vv{a}$ and $\vv{b}$ point in the same direction (or one of them is $\vv{0}$), because then the "triangle" collapses into a straight line.
+
+</Theorem>
+
+For example, with $\vv{a} = \colvec{3\\4}$ and $\vv{b} = \colvec{5\\-12}$, we have $\norm{\vv{a}} + \norm{\vv{b}} = 5 + 13 = 18$, while $\norm{\vv{a} + \vv{b}} = \norm{\colvec{8\\-8}} = \sqrt{128} \approx 11.3$.
+
+For now, the picture is our reason to believe the triangle inequality. A proof that works in every $\R^n$, including dimensions we can't draw, needs a tool called the *inner product*. We'll prove it in Chapter 10.
+
+### Unit vectors
+
+A vector of length 1 is called a **unit vector**. Given any nonzero vector $\vv{a}$, we can produce a unit vector pointing in the same direction by dividing by its magnitude:
+
+$$
+\hat{\vv{a}} = \frac{\vv{a}}{\norm{\vv{a}}}.
+$$
+
+This process is called **normalizing** the vector. Property (c) tells us it always works. Dividing by $\norm{\vv{a}}$ means scaling by the positive number $c = 1/\norm{\vv{a}}$, which keeps the direction and gives
+
+$$
+\norm{\hat{\vv{a}}} = \frac{1}{\norm{\vv{a}}}\,\norm{\vv{a}} = 1.
+$$
+
+We need $\vv{a} \ne \vv{0}$ here. By property (b), that is exactly what guarantees $\norm{\vv{a}} \ne 0$, so that we can divide by it.
+
+<Example>
+
+Normalize $\vv{a} = \colvec{3\\4}$. We computed $\norm{\vv{a}} = 5$, so
+
+$$
+\hat{\vv{a}} = \frac{1}{5}\colvec{3\\4} = \colvec{3/5\\4/5}.
+$$
+
+Check: $\norm{\hat{\vv{a}}} = \sqrt{(3/5)^2 + (4/5)^2} = \sqrt{9/25 + 16/25} = \sqrt{25/25} = 1$. ✓
+
+</Example>
+
+<Concept>
+
+The **standard basis vectors** in $\R^2$ are the unit vectors along the coordinate axes:
+
+$$
+\vv{e}_1 = \colvec{1\\0}, \qquad \vv{e}_2 = \colvec{0\\1}.
+$$
+
+In $\R^3$ we add $\vv{e}_3 = \colvec{0\\0\\1}$. More generally, in $\R^n$ the vector $\vv{e}_i$ has a 1 in position $i$ and 0 everywhere else. Any vector can be written in terms of these:
+
+$$
+\colvec{a_1\\a_2} = a_1\,\vv{e}_1 + a_2\,\vv{e}_2.
+$$
+
+</Concept>
+
+<Exercise>
+
+Find the magnitude of each vector.
+
+1. $\colvec{5\\-12}$
+2. $\colvec{1\\1\\1\\1}$
+3. $\colvec{0\\0\\7}$
+
+</Exercise>
+
+<Solution>
+
+1. $\norm{\colvec{5\\-12}} = \sqrt{25+144} = \sqrt{169} = 13$.
+2. $\norm{\colvec{1\\1\\1\\1}} = \sqrt{1+1+1+1} = \sqrt{4} = 2$.
+3. $\norm{\colvec{0\\0\\7}} = \sqrt{0+0+49} = 7$.
+
+</Solution>
+
+<Exercise>
+
+Normalize the vector $\vv{v} = \colvec{1\\2\\2}$. Verify your answer has length 1.
+
+</Exercise>
+
+<Solution>
+
+$\norm{\vv{v}} = \sqrt{1+4+4} = 3$. So $\hat{\vv{v}} = \frac{1}{3}\colvec{1\\2\\2} = \colvec{1/3 \\ 2/3 \\ 2/3}$. Check: $\norm{\hat{\vv{v}}} = \sqrt{1/9 + 4/9 + 4/9} = \sqrt{9/9} = 1$. ✓
+
+</Solution>

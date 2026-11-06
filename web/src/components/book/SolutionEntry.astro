@@ -1,0 +1,18 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  href: string;
+  kind: string;
+  title?: string;
+}
+const { id, label, href, kind, title } = Astro.props;
+---
+<section class={`solution-entry ${kind === 'Challenge' ? 'challenge' : ''}`} id={id}>
+  <h3>
+    <a href={href}>{label}</a>{title && <span class="item-title"> ({title})</span>}
+  </h3>
+  <div class="box box-solution">
+    <div class="box-body"><slot /></div>
+  </div>
+</section>

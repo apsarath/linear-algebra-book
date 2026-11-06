@@ -1,0 +1,106 @@
+---
+import 'katex/dist/katex.min.css';
+import '../styles/book.css';
+import { BASE, BOOK_TITLE, chapterUrl, sectionUrl, solutionsUrl } from '../lib/book.mjs';
+import { allChapters } from '../lib/chapters';
+
+interface TocItem {
+  id: string;
+  html: string;
+  number?: string;
+}
+interface Props {
+  title: string;
+  current?: { slug: string; section?: string; page: 'section' | 'solutions' };
+  sections?: TocItem[];
+  prev?: { href: string; label: string; html?: string };
+  next?: { href: string; label: string; html?: string };
+}
+const { title, current, sections = [], prev, next } = Astro.props;
+const chapters = allChapters();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · {BOOK_TITLE}</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="book-title" href={BASE}>{BOOK_TITLE}</a>
+      {current?.page === 'section' && (
+        <label class="toggle">
+          <input type="checkbox" id="show-solutions" />
+          Show all solutions
+        </label>
+      )}
+    </header>
+    <div class="shell">
+      <nav class="sidebar" aria-label="Chapters">
+        <ol>
+          {chapters.map((c) => (
+            <li class:list={[{ current: current?.slug === c.slug, unavailable: !c.available }]}>
+              {c.available ? (
+                <a href={chapterUrl(c.slug)}><span class="num">{c.n}</span>{c.title}</a>
+              ) : (
+                <span title="Not migrated yet"><span class="num">{c.n}</span>{c.title}</span>
+              )}
+              {c.available && current?.slug === c.slug && (
+                <ol class="sidebar-sections">
+                  {c.sections.map((s) => (
+                    <li>
+                      <a class:list={[{ active: current.page === 'section' && current.section === s.slug }]} href={sectionUrl(c.slug, s.slug)}>
+                        <span class="num">{s.number}</span><span set:html={s.html} />
+                      </a>
+                    </li>
+                  ))}
+                  {c.hasSolutions && (
+                    <li>
+                      <a class:list={['sub-solutions', { active: current.page === 'solutions' }]} href={solutionsUrl(c.slug)}>
+                        Solutions
+                      </a>
+                    </li>
+                  )}
+                </ol>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+      <main class="content">
+        <slot />
+        {(prev || next) && (
+          <nav class="pager">
+            {prev ? <a href={prev.href}>← {prev.html ? <span set:html={prev.html} /> : prev.label}</a> : <span />}
+            {next ? <a href={next.href}>{next.html ? <span set:html={next.html} /> : next.label} →</a> : <span />}
+          </nav>
+        )}
+      </main>
+      {sections.length > 0 && (
+        <nav class="toc" aria-label="On this page">
+          <div class="toc-title">On this page</div>
+          <ol>
+            {sections.map((s) => (
+              <li><a href={`#${s.id}`}>{s.number && <span class="num">{s.number}</span>}<span set:html={s.html} /></a></li>
+            ))}
+          </ol>
+        </nav>
+      )}
+    </div>
+    <script>
+      const toggle = document.getElementById('show-solutions') as HTMLInputElement | null;
+      if (toggle) {
+        toggle.checked = localStorage.getItem('show-solutions') === '1';
+        const apply = () => {
+          document.querySelectorAll<HTMLDetailsElement>('details.solution').forEach((d) => (d.open = toggle.checked));
+        };
+        apply();
+        toggle.addEventListener('change', () => {
+          localStorage.setItem('show-solutions', toggle.checked ? '1' : '0');
+          apply();
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=0.75]
+  % --- Tip-to-tail (left) ---
+  \begin{scope}
+    \draw[gray!30, thin] (-0.5,-0.5) grid (4.5,5.5);
+    \draw[->, thick] (-0.5,0) -- (4.5,0) node[right] {$x$};
+    \draw[->, thick] (0,-0.5) -- (0,5.5) node[above] {$y$};
+    \draw[->, aopsblue, line width=1.2pt] (0,0) -- (2,1)
+      node[midway, below right] {$\vv{a}$};
+    \draw[->, aopsred, line width=1.2pt] (2,1) -- (3,4)
+      node[midway, right] {$\vv{b}$};
+    \draw[->, aopspurple, line width=1.4pt] (0,0) -- (3,4)
+      node[above left] {$\vv{a}+\vv{b}$};
+    \node[below, font=\small] at (2,-1) {Tip-to-tail};
+  \end{scope}
+  % --- Parallelogram (right) ---
+  \begin{scope}[xshift=7cm]
+    \draw[gray!30, thin] (-0.5,-0.5) grid (4.5,5.5);
+    \draw[->, thick] (-0.5,0) -- (4.5,0) node[right] {$x$};
+    \draw[->, thick] (0,-0.5) -- (0,5.5) node[above] {$y$};
+    \draw[->, aopsblue, line width=1.2pt] (0,0) -- (2,1)
+      node[midway, below right] {$\vv{a}$};
+    \draw[->, aopsred, line width=1.2pt] (0,0) -- (1,3)
+      node[midway, left] {$\vv{b}$};
+    \draw[dashed, gray] (2,1) -- (3,4);
+    \draw[dashed, gray] (1,3) -- (3,4);
+    \draw[->, aopspurple, line width=1.4pt] (0,0) -- (3,4)
+      node[above left] {$\vv{a}+\vv{b}$};
+    \node[below, font=\small] at (2,-1) {Parallelogram};
+  \end{scope}
+\end{tikzpicture}

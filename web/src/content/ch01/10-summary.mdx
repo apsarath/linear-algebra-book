@@ -1,0 +1,53 @@
+---
+title: Summary
+---
+
+
+Let's collect the main ideas, then the formulas.
+
+**What a vector is.**
+
+- A **vector** is a displacement: it has a length and a direction, but no fixed position. Two arrows are the *same vector* exactly when they have the same length and the same direction. To check, slide one onto the other's tail and see whether the tips meet.
+- Drawn with its tail at the origin, a vector is in **standard position**, and its tip lands on the point whose coordinates are its **components**. A vector is still not a point: a point is a location, and a vector is a move.
+- $\R^n$ is the set of all vectors with $n$ real components. We can draw them only for $n = 2$ and $3$, but every formula works the same way for any $n$.
+
+**Operations.**
+
+- **Addition** is component-wise. Geometrically, use the *tip-to-tail* rule or the *parallelogram* rule; both give the same sum. Addition is commutative and associative.
+- **Scalar multiplication** multiplies every component by $c$. It stretches, shrinks, or flips a vector but **never turns it**: $c\,\vv{a}$ stays on the line through the origin along $\vv{a}$. Nonzero vectors that are scalar multiples of each other are **parallel**.
+- The **zero vector** $\vv{0}$ has all components $0$, and the **negative** $-\vv{a} = (-1)\vv{a}$ has the same length as $\vv{a}$ but points the opposite way.
+- **Subtraction:** $\vv{b} - \vv{a}$ is the vector you add to $\vv{a}$ to get $\vv{b}$. With both vectors drawn from the same point, it is the arrow **from the tip of $\vv{a}$ to the tip of $\vv{b}$** (*destination minus start*). The same vector appears as $\vv{b} + (-\vv{a})$ in standard position and as the second diagonal of the parallelogram on $\vv{a}$ and $\vv{b}$.
+
+**Length and distance.**
+
+- The **norm** (magnitude, length) $\norm{\vv{a}}$ comes from the Pythagorean theorem. It is never negative, it is $0$ only for $\vv{0}$, and it scales by $\abs{c}$. It also satisfies the **triangle inequality**: a detour is never shorter than the direct route.
+- A **unit vector** has length 1. Dividing any nonzero vector by its norm (**normalizing**) gives the unit vector in the same direction. The **standard basis vectors** $\vv{e}_1, \ldots, \vv{e}_n$ are the unit vectors along the axes.
+- The **distance** between two vectors is the length of the displacement between them.
+
+**Combining everything.**
+
+- A **linear combination** $c_1\vv{v}_1 + \cdots + c_k\vv{v}_k$ uses both operations at once. The multiples of one nonzero vector fill a line. Two non-parallel vectors in $\R^2$ can reach every vector in the plane. The set of everything a collection of vectors can reach is its **span**, the subject of Chapter 2.
+
+**Key formulas.** Here $\vv{a}, \vv{b}, \vv{w} \in \R^n$, $c, d \in \R$, and $P, Q$ are points.
+
+| Idea | Formula |
+|---|---|
+| Vector in $\R^n$ | $\vv{a} = \colvec{a_1 \\ \vdots \\ a_n}$ |
+| Addition | $\vv{a} + \vv{b} = \colvec{a_1 + b_1 \\ \vdots \\ a_n + b_n}$ |
+| Scalar multiplication | $c\,\vv{a} = \colvec{ca_1 \\ \vdots \\ ca_n}$ |
+| Commutativity | $\vv{a} + \vv{b} = \vv{b} + \vv{a}$ |
+| Associativity | $(\vv{a} + \vv{b}) + \vv{w} = \vv{a} + (\vv{b} + \vv{w})$ |
+| Distributivity | $c(\vv{a} + \vv{b}) = c\,\vv{a} + c\,\vv{b}$, &ensp; $(c + d)\vv{a} = c\,\vv{a} + d\,\vv{a}$ |
+| Repeated scaling | $c(d\,\vv{a}) = (cd)\vv{a}$, &ensp; $1\,\vv{a} = \vv{a}$ |
+| Zero and negative | $\vv{a} + \vv{0} = \vv{a}$, &ensp; $-\vv{a} = (-1)\vv{a}$, &ensp; $\vv{a} + (-\vv{a}) = \vv{0}$ |
+| Subtraction | $\vv{b} - \vv{a} = \colvec{b_1 - a_1 \\ \vdots \\ b_n - a_n} = \vv{b} + (-\vv{a})$ |
+| Meaning of $\vv{b} - \vv{a}$ | $\vv{a} + (\vv{b} - \vv{a}) = \vv{b}$ &ensp; (from the tip of $\vv{a}$ to the tip of $\vv{b}$) |
+| From $P$ to $Q$ | $\overrightarrow{PQ} = Q - P$ |
+| Norm | $\norm{\vv{a}} = \sqrt{a_1^2 + a_2^2 + \cdots + a_n^2}$ |
+| Norm is never negative | $\norm{\vv{a}} \ge 0$, &ensp; and $\norm{\vv{a}} = 0$ only when $\vv{a} = \vv{0}$ |
+| Norm and scaling | $\norm{c\,\vv{a}} = \abs{c}\,\norm{\vv{a}}$, &ensp; so $\norm{-\vv{a}} = \norm{\vv{a}}$ and $\norm{\vv{a} - \vv{b}} = \norm{\vv{b} - \vv{a}}$ |
+| Triangle inequality | $\norm{\vv{a} + \vv{b}} \le \norm{\vv{a}} + \norm{\vv{b}}$ |
+| Unit vector | $\hat{\vv{a}} = \dfrac{\vv{a}}{\norm{\vv{a}}}$ for $\vv{a} \ne \vv{0}$, with $\norm{\hat{\vv{a}}} = 1$ |
+| Standard basis | $\vv{a} = a_1\vv{e}_1 + a_2\vv{e}_2 + \cdots + a_n\vv{e}_n$ |
+| Distance | $d(\vv{a}, \vv{b}) = \norm{\vv{a} - \vv{b}}$ |
+| Linear combination | $c_1\vv{v}_1 + c_2\vv{v}_2 + \cdots + c_k\vv{v}_k$ |

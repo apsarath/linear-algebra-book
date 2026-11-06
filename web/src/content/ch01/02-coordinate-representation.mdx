@@ -1,0 +1,89 @@
+---
+title: Coordinate Representation
+---
+
+import ComponentsExplorer from '../../components/interactive/ComponentsExplorer.tsx';
+import Components3DExplorer from '../../components/interactive/Components3DExplorer.tsx';
+
+
+Drawing pictures is great for intuition, but we need a precise way to describe vectors so we can compute with them. Here's how.
+
+Pick a coordinate system: the usual $x$- and $y$-axes in the plane. A vector in standard position that ends at the point $(a_1, a_2)$ can be written as
+
+$$
+\vv{a} = \colvec{a_1 \\ a_2}.
+$$
+
+The numbers $a_1$ and $a_2$ are called the **components** (or **entries**) of the vector. The component $a_1$ tells you the horizontal displacement, and $a_2$ tells you the vertical displacement.
+
+<Explore title="Try it: components">
+
+Drag the tip of $\vv{a}$ and watch its two components change. The red leg is the horizontal displacement $a_1$; the green leg is the vertical displacement $a_2$.
+
+<ComponentsExplorer client:visible />
+
+</Explore>
+
+The same idea works in three dimensions. In $\R^3$ (three-dimensional space), a vector has three components:
+
+$$
+\vv{b} = \colvec{b_1 \\ b_2 \\ b_3}.
+$$
+
+<Explore title="Try it: components in 3D">
+
+Use the sliders to set the three components of $\vv{b}$. The dashed legs show the walk from the origin to the tip: $b_1$ along the $x$-axis, then $b_2$ along the $y$-axis, then $b_3$ up the $z$-axis. Drag the picture to look at it from another angle.
+
+<Components3DExplorer client:visible />
+
+</Explore>
+
+<Definition>
+
+The set of all vectors with $n$ real-number components is denoted $\R^n$. So $\R^2$ is the set of all 2-component vectors (the plane), $\R^3$ is three-dimensional space, and in general
+
+$$
+\R^n = \left\{ \colvec{a_1 \\ a_2 \\ \vdots \\ a_n} \;\middle|\; a_1, a_2, \ldots, a_n \in \R \right\}.
+$$
+
+</Definition>
+
+Vectors in $\R^2$ and $\R^3$ are easy to picture: they are arrows on a page or in the room around you. Beyond three dimensions, though, nobody can visualize them. There is no fourth direction perpendicular to length, width, and height that we can point to. Yet a vector in $\R^4$ is no harder to *write down* than one in $\R^2$:
+
+$$
+\colvec{2 \\ -1 \\ 0 \\ 5}
+$$
+
+is just a list of four numbers. For instance, it might record how much each of four stock prices changed in one day. So we lean on two things at once. Pictures in two and three dimensions build our intuition, and algebra on the components lets us carry that intuition into dimensions we can't see.
+
+We sometimes write a vector horizontally for convenience—$\vv{a} = (3,\, 2)$—but the “official” notation in this book is the column form shown above. Context will always make the meaning clear.
+
+<Exercise>
+
+Draw the following vectors in standard position on a set of coordinate axes, and label each one.
+
+1. $\vv{u} = \colvec{4 \\ 1}$
+2. $\vv{v} = \colvec{-2 \\ 3}$
+3. $\vv{w} = \colvec{0 \\ -3}$
+
+</Exercise>
+
+<Solution>
+
+<Figure src="ch01/sol-draw-vectors.svg" alt="Vectors u = (4,1), v = (-2,3), and w = (0,-3) drawn from the origin." />
+
+$\vv{u}$ points 4 right and 1 up; $\vv{v}$ points 2 left and 3 up; $\vv{w}$ points straight down 3 units.
+
+</Solution>
+
+<Exercise>
+
+Write down the component representation of a vector that points from the origin to the point $(5,\, -1,\, 2)$ in $\R^3$.
+
+</Exercise>
+
+<Solution>
+
+$\vv{v} = \colvec{5\\-1\\2}$. The components are simply the coordinates of the point, since the vector starts at the origin.
+
+</Solution>

@@ -1,0 +1,98 @@
+---
+title: Vector Addition
+---
+
+import AdditionExplorer from '../../components/interactive/AdditionExplorer.tsx';
+
+
+Suppose you walk 3 blocks east and 2 blocks north, then continue 1 block east and 4 blocks north. Your total displacement is 4 blocks east and 6 blocks north. You just *added* two vectors.
+
+### The geometric picture
+
+There are two equivalent ways to visualize vector addition.
+
+**Tip-to-tail rule.** To add $\vv{a}$ and $\vv{b}$, place the tail of $\vv{b}$ at the tip of $\vv{a}$. The sum $\vv{a} + \vv{b}$ is the arrow from the tail of $\vv{a}$ to the tip of $\vv{b}$.
+
+<Figure src="ch01/tip-to-tail.svg" alt="Tip-to-tail addition: b starts where a ends, and a + b goes from the tail of a to the tip of b." />
+
+**Parallelogram rule.** Draw both vectors from the same point. Complete the parallelogram. The diagonal from the common tail is $\vv{a} + \vv{b}$.
+
+<Figure src="ch01/parallelogram.svg" alt="Parallelogram addition: a and b drawn from the same point; the diagonal of the parallelogram they span is a + b." />
+
+Take a moment to convince yourself that both rules give the same result. (They'd better—otherwise we'd have two different definitions of addition!)
+
+<Explore title="Try it: two rules, one sum">
+
+Drag the tips of $\vv{a}$ and $\vv{b}$, and switch between the two rules. The purple sum never moves when you switch.
+
+<AdditionExplorer client:visible />
+
+</Explore>
+
+### The algebraic rule
+
+In coordinates, addition is beautifully simple: just add corresponding components.
+
+<Definition>
+
+If $\vv{a} = \colvec{a_1\\a_2}$ and $\vv{b} = \colvec{b_1\\b_2}$, then
+
+$$
+\vv{a} + \vv{b} = \colvec{a_1 + b_1 \\ a_2 + b_2}.
+$$
+
+The same rule applies component-wise in $\R^n$ for any $n$.
+
+</Definition>
+
+<Example id="ex-vector-addition">
+
+Let $\vv{a} = \colvec{3\\-1}$ and $\vv{b} = \colvec{2\\5}$. Then
+
+$$
+\vv{a} + \vv{b} = \colvec{3+2\\-1+5} = \colvec{5\\4}.
+$$
+
+</Example>
+
+### Properties of addition
+
+You might guess that vector addition inherits nice properties from ordinary addition of real numbers. Let's verify a couple.
+
+*Is addition commutative?* That is, does $\vv{a} + \vv{b} = \vv{b} + \vv{a}$? In components:
+
+$$
+\colvec{a_1 + b_1 \\ a_2 + b_2} = \colvec{b_1 + a_1 \\ b_2 + a_2},
+$$
+
+which is true because addition of real numbers is commutative. Geometrically, the parallelogram rule makes this obvious: the diagonal doesn't change if you swap the two sides.
+
+*Is addition associative?* Yes: $(\vv{a} + \vv{b}) + \vv{c} = \vv{a} + (\vv{b} + \vv{c})$, again because real-number addition is associative. We can therefore write $\vv{a} + \vv{b} + \vv{c}$ without ambiguity.
+
+<Exercise>
+
+Compute $\vv{u} + \vv{v}$ where $\vv{u} = \colvec{1\\-3\\4}$ and $\vv{v} = \colvec{-2\\7\\0}$.
+
+</Exercise>
+
+<Solution>
+
+$\vv{u} + \vv{v} = \colvec{1+(-2)\\-3+7\\4+0} = \colvec{-1\\4\\4}$.
+
+</Solution>
+
+<Exercise>
+
+Verify, by drawing a picture in $\R^2$, that the tip-to-tail rule and the parallelogram rule agree for $\vv{a} = \colvec{2\\1}$ and $\vv{b} = \colvec{1\\3}$.
+
+</Exercise>
+
+<Solution>
+
+$\vv{a} + \vv{b} = \colvec{3\\4}$. Both constructions reach the same point:
+
+<Figure src="ch01/sol-addition-rules.svg" alt="Side by side: tip-to-tail and parallelogram constructions for a = (2,1) and b = (1,3), both ending at (3,4)." />
+
+Both give $\vv{a}+\vv{b} = \colvec{3\\4}$. ✓
+
+</Solution>

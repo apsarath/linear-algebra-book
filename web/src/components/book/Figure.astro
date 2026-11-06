@@ -1,0 +1,25 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import { BASE } from '../../lib/book.mjs';
+
+interface Props {
+  /** Path under public/figures, e.g. "ch01/city-grid.svg" */
+  src: string;
+  alt: string;
+  caption?: string;
+  /** Multiplier on the figure's natural size */
+  scale?: number;
+}
+const { src, alt, caption, scale = 1.25 } = Astro.props;
+
+// TikZ output is sized in pt; render it slightly larger than print so labels match body text.
+const file = path.join(process.cwd(), 'public', 'figures', src);
+const svgHead = fs.readFileSync(file, 'utf8').slice(0, 600);
+const widthPt = parseFloat(/width=['"]([\d.]+)pt['"]/.exec(svgHead)?.[1] ?? '0');
+const width = widthPt ? Math.round(widthPt * (4 / 3) * scale) : undefined;
+---
+<figure class="figure">
+  <img src={`${BASE}figures/${src}`} alt={alt} width={width} loading="lazy" />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

@@ -1,0 +1,21 @@
+\begin{tikzpicture}[>=Stealth, thick, scale=0.8]
+  \draw[gray!30, thin] (-1.5,-2.5) grid (6.5,4.5);
+  \draw[->, thick] (-1.5,0) -- (6.5,0) node[right] {$x$};
+  \draw[->, thick] (0,-2.5) -- (0,4.5) node[above] {$y$};
+
+  % 3u
+  \draw[->, aopsblue, line width=1.2pt] (0,0) -- (3,3)
+    node[midway, above left] {$3\vv{u}$};
+  % 2w from tip of 3u
+  \draw[->, aopsred, line width=1.2pt] (3,3) -- (5,1)
+    node[midway, above right] {$2\vv{w}$};
+  % result
+  \draw[->, aopspurple, line width=1.4pt] (0,0) -- (5,1)
+    node[below right] {$\vv{b} = \colvec{5\\1}$};
+
+  % original vectors (thinner, for reference)
+  \draw[->, aopsblue!50, line width=0.7pt] (0,0) -- (1,1)
+    node[above left, font=\footnotesize] {$\vv{u}$};
+  \draw[->, aopsred!50, line width=0.7pt] (0,0) -- (1,-1)
+    node[below left, font=\footnotesize] {$\vv{w}$};
+\end{tikzpicture}
