@@ -1,7 +1,7 @@
 ---
 import 'katex/dist/katex.min.css';
 import '../styles/book.css';
-import { BASE, BOOK_TITLE, chapterUrl, sectionUrl } from '../lib/book.mjs';
+import { BASE, BOOK_AUTHOR, BOOK_TITLE, chapterUrl, sectionUrl } from '../lib/book.mjs';
 import { allChapters } from '../lib/chapters';
 
 interface TocItem {
@@ -28,7 +28,10 @@ const chapters = allChapters();
   </head>
   <body>
     <header class="topbar">
-      <a class="book-title" href={BASE}>{BOOK_TITLE}</a>
+      <a class="brand" href={BASE}>
+        <span class="book-title">{BOOK_TITLE}</span>
+        <span class="book-author">{BOOK_AUTHOR}</span>
+      </a>
       {current?.page === 'section' && (
         <label class="toggle">
           <input type="checkbox" id="show-solutions" />

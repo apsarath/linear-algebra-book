@@ -1,6 +1,6 @@
 ---
 import BookLayout from '../layouts/BookLayout.astro';
-import { BOOK_TITLE, chapterUrl, sectionUrl } from '../lib/book.mjs';
+import { BOOK_AUTHOR, BOOK_TITLE, chapterUrl, sectionUrl } from '../lib/book.mjs';
 import { allChapters } from '../lib/chapters';
 
 const chapters = allChapters();
@@ -8,6 +8,7 @@ const chapters = allChapters();
 <BookLayout title="Contents">
   <header class="chapter-head">
     <h1>{BOOK_TITLE}</h1>
+    <p class="byline">{BOOK_AUTHOR}</p>
     <p class="lede">
       A problem-driven introduction to linear algebra.
       Read actively: try every exercise before opening its solution, and play with the interactive figures.

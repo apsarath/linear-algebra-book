@@ -5,6 +5,7 @@ import GithubSlugger from 'github-slugger';
 export const BASE = '/';
 
 export const BOOK_TITLE = 'Introduction to Linear Algebra';
+export const BOOK_AUTHOR = 'Sarath Chandar';
 
 export const CHAPTERS = [
   { n: 1, slug: 'ch01', title: 'Vectors' },
