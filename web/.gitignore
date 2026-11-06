@@ -21,3 +21,6 @@ pnpm-debug.log*
 # local tooling
 .vercel/
 .DS_Store
+
+# instructor-only answer key (not deployed)
+solutions/

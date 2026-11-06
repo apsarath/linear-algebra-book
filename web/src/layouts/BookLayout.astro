@@ -1,7 +1,7 @@
 ---
 import 'katex/dist/katex.min.css';
 import '../styles/book.css';
-import { BASE, BOOK_TITLE, chapterUrl, sectionUrl, solutionsUrl } from '../lib/book.mjs';
+import { BASE, BOOK_TITLE, chapterUrl, sectionUrl } from '../lib/book.mjs';
 import { allChapters } from '../lib/chapters';
 
 interface TocItem {
@@ -11,7 +11,7 @@ interface TocItem {
 }
 interface Props {
   title: string;
-  current?: { slug: string; section?: string; page: 'section' | 'solutions' };
+  current?: { slug: string; section?: string; page: 'section' };
   sections?: TocItem[];
   prev?: { href: string; label: string; html?: string };
   next?: { href: string; label: string; html?: string };
@@ -55,13 +55,6 @@ const chapters = allChapters();
                       </a>
                     </li>
                   ))}
-                  {c.hasSolutions && (
-                    <li>
-                      <a class:list={['sub-solutions', { active: current.page === 'solutions' }]} href={solutionsUrl(c.slug)}>
-                        Solutions
-                      </a>
-                    </li>
-                  )}
                 </ol>
               )}
             </li>

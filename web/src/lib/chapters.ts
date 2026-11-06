@@ -16,7 +16,6 @@ export interface SectionInfo {
 
 export type Chapter = (typeof CHAPTERS)[number] & {
   available: boolean;
-  hasSolutions: boolean;
   sections: SectionInfo[];
 };
 
@@ -27,7 +26,6 @@ export function allChapters(): Chapter[] {
     return {
       ...c,
       available: files.length > 0,
-      hasSolutions: fs.existsSync(path.join(dir, 'solutions.mdx')),
       sections: files.map((f, i) => {
         const source = fs.readFileSync(path.join(dir, f.name), 'utf8');
         const title = readFrontmatter(source).title || f.slug;

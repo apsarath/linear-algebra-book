@@ -1,7 +1,7 @@
 ---
 import BookLayout from '../../layouts/BookLayout.astro';
 import { bookComponents } from '../../components/book';
-import { sectionUrl, solutionsUrl } from '../../lib/book.mjs';
+import { sectionUrl } from '../../lib/book.mjs';
 import { allChapters, pageSubsections } from '../../lib/chapters';
 
 export function getStaticPaths() {
@@ -27,9 +27,7 @@ const prev = prevSec
   : { href: '/', label: 'Contents' };
 const next = nextSec
   ? { href: sectionUrl(chapter.slug, nextSec.slug), label: `${nextSec.number} ${nextSec.title}`, html: `${nextSec.number} ${nextSec.html}` }
-  : chapter.hasSolutions
-    ? { href: solutionsUrl(chapter.slug), label: `Chapter ${chapter.n} solutions` }
-    : undefined;
+  : undefined;
 ---
 <BookLayout
   title={`${section.number} ${section.title}`}

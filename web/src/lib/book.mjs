@@ -40,10 +40,6 @@ export function sectionUrl(chapterSlug, sectionSlug, hash = '') {
   return `${BASE}${chapterSlug}/${sectionSlug}/${hash ? `#${hash}` : ''}`;
 }
 
-export function solutionsUrl(slug, hash = '') {
-  return `${BASE}${slug}/solutions/${hash ? `#${hash}` : ''}`;
-}
-
 /** Numbered section files (`01-slug.mdx`) in a chapter folder, in order. */
 export function listSectionFiles(dir) {
   if (!fs.existsSync(dir)) return [];
