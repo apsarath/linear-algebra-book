@@ -6,6 +6,7 @@ export const BASE = '/';
 
 export const BOOK_TITLE = 'Introduction to Linear Algebra';
 export const BOOK_AUTHOR = 'Sarath Chandar';
+export const BOOK_YEAR = 2026;
 
 export const CHAPTERS = [
   { n: 1, slug: 'ch01', title: 'Vectors' },

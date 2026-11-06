@@ -1,7 +1,7 @@
 ---
 import 'katex/dist/katex.min.css';
 import '../styles/book.css';
-import { BASE, BOOK_AUTHOR, BOOK_TITLE, chapterUrl, sectionUrl } from '../lib/book.mjs';
+import { BASE, BOOK_AUTHOR, BOOK_TITLE, BOOK_YEAR, chapterUrl, sectionUrl } from '../lib/book.mjs';
 import { allChapters } from '../lib/chapters';
 
 interface TocItem {
@@ -84,6 +84,9 @@ const chapters = allChapters();
         </nav>
       )}
     </div>
+    <footer class="site-footer">
+      <p>© {BOOK_YEAR} {BOOK_AUTHOR}. All rights reserved.</p>
+    </footer>
     <script>
       const toggle = document.getElementById('show-solutions') as HTMLInputElement | null;
       if (toggle) {
